@@ -1,0 +1,59 @@
+from task import Task
+from data import load_tasks, save_tasks
+from pomodoro import start_pomodoro
+
+def show_menu():
+    print("\n--- Simple Task Manager + Pomodoro ---")
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Mark Task as Done")
+    print("4. Start Pomodoro Timer")
+    print("5. Exit")
+
+def main():
+    tasks = load_tasks()
+
+    while True:
+        show_menu()
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            title = input("Enter task title: ")
+            task = Task(title)
+            tasks.append(task.to_dict())
+            save_tasks(tasks)
+            print("Task added successfully!")
+
+        elif choice == "2":
+            if not tasks:
+                print("No tasks yet.")
+            else:
+                print("\nYour Tasks:")
+                for i, t in enumerate(tasks):
+                    status = "✔ Done" if t["completed"] else "✗ Not Done"
+                    print(f"{i+1}. {t['title']} - {status}")
+
+        elif choice == "3":
+            if not tasks:
+                print("No tasks to mark.")
+            else:
+                num = int(input("Enter task number: "))
+                if 1 <= num <= len(tasks):
+                    tasks[num-1]["completed"] = True
+                    save_tasks(tasks)
+                    print("Task marked as done!")
+                else:
+                    print("Invalid number.")
+
+        elif choice == "4":
+            start_pomodoro()
+
+        elif choice == "5":
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid choice! Try again.")
+
+if __name__ == "__main__":
+    main()

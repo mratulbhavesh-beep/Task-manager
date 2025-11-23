@@ -1,0 +1,13 @@
+import time
+
+def start_pomodoro():
+    print("\nStarting Pomodoro: 2 min work + 30 sec break\n")
+
+    # Work session
+    print("Work for 2 minutes...")
+    time.sleep(2 * 60)
+
+    print("Break time! 30 seconds...")
+    time.sleep(30)
+
+    print("Pomodoro session completed!\n")
