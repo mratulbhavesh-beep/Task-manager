@@ -1,0 +1,100 @@
+class Task:
+    def __init__(self, title, completed=False):
+        self.title = title
+        self.completed = completed
+
+    def mark_done(self):
+        self.completed = True
+
+    def to_dict(self):
+        return {
+            "title": self.title,
+            "completed": self.completed
+        }
+
+import json
+import os
+
+DATA_FILE = "tasks.json"
+
+def load_tasks():
+    if not os.path.exists(DATA_FILE):
+        return []
+    with open(DATA_FILE, "r") as f:
+        return json.load(f)
+
+def save_tasks(tasks):
+    with open(DATA_FILE, "w") as f:
+        json.dump(tasks, f, indent=4)
+
+import time
+
+def start_pomodoro():
+    print("\nStarting Pomodoro: 2 min work + 30 sec break\n")
+
+    # Work session
+    print("Work for 2 minutes...")
+    time.sleep(2 * 60)
+
+    print("Break time! 30 seconds...")
+    time.sleep(30)
+
+    print("Pomodoro session completed!\n")
+
+
+def show_menu():
+    print("\n--- Simple Task Manager + Pomodoro ---")
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Mark Task as Done")
+    print("4. Start Pomodoro Timer")
+    print("5. Exit")
+
+def main():
+    tasks = load_tasks()
+
+    while True:
+        show_menu()
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            title = input("Enter task title: ")
+            task = Task(title)
+            tasks.append(task.to_dict())
+            save_tasks(tasks)
+            print("Task added successfully!")
+
+        elif choice == "2":
+            if not tasks:
+                print("No tasks yet.")
+            else:
+                print("\nYour Tasks:")
+                for i, t in enumerate(tasks):
+                    status = "✔ Done" if t["completed"] else "✗ Not Done"
+                    print(f"{i+1}. {t['title']} - {status}")
+
+        elif choice == "3":
+            if not tasks:
+                print("No tasks to mark.")
+            else:
+                num = int(input("Enter task number: "))
+                if 1 <= num <= len(tasks):
+                    tasks[num-1]["completed"] = True
+                    save_tasks(tasks)
+                    print("Task marked as done!")
+                else:
+                    print("Invalid number.")
+
+        elif choice == "4":
+            start_pomodoro()
+
+        elif choice == "5":
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid choice! Try again.")
+
+if __name__ == "__main__":
+    main()
+
