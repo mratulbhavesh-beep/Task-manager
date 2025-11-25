@@ -1,0 +1,21 @@
+Problem Statement – 
+Study Planner With Pomodoro Timer
+
+Students today face increasing academic pressure, multiple deadlines, and a demanding study load that requires effective planning and discipline. Many students struggle with managing their time, prioritizing tasks, and maintaining consistent focus while studying. Traditional manual planning through notebooks or simple reminders is often inefficient, unstructured, and easily ignored. Additionally, digital distractions and a lack of routine make it difficult for students to study with concentration for extended periods.
+
+To overcome these challenges, there is a need for a digital tool that not only helps students organize their study tasks but also guides them to follow a structured productivity technique. The Pomodoro Technique—based on timed study sessions and controlled breaks—has proven to be effective in improving focus, reducing burnout, and enhancing learning efficiency. However, most Pomodoro applications lack integration with a complete study planning system.
+
+The problem addressed in this project is:
+
+How to help students plan their tasks in an organized and systematic way
+
+How to ensure students remain focused and productive during their study sessions
+
+How to combine task management with an effective time-based productivity method
+
+How to maintain a simple and user-friendly interface while storing tasks and progress efficiently
+
+
+The proposed solution is to build a Study Planner with an Integrated Pomodoro Timer, a lightweight and practical system developed using Python. It enables users to create tasks, view pending work, mark tasks as completed, and track their study habits using the Pomodoro method. The system uses basic data structures, file handling, loops, and functions to ensure smooth operation and easy maintenance.
+
+By merging study planning with structured time intervals, the project aims to provide students with a tool that supports discipline, reduces procrastination, and increases their overall academic productivity. This system is especially beneficial for students who find it difficult to stay consistent or need a more organized approach to studying.
