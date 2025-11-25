@@ -28,8 +28,26 @@ Runs inside the terminal.
 ### ✔ Data Storage  
 Tasks are saved in a simple **JSON file (`tasks.json`)**, so they don't disappear when you close the program.
 
+### Technologies / Libraries
+
+Python
+
+Scikit-learn
+
+Pandas
+
+Numpy
+
+###  Project Structure
+
+main.py
+model.py
+data/
+README.md
+
+
+
 ---
 
-## 📁 Project Structure
 
 
